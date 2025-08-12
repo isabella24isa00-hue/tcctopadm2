@@ -1,0 +1,136 @@
+import React from "react";
+import { motion } from "framer-motion";
+// shadcn/ui and lucide-react are available in the environment per canvas instructions
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Mail } from "lucide-react";
+
+export default function SitePortfolio() {
+  return (
+    <div className="min-h-screen bg-gray-50 text-slate-900">
+      <header className="bg-white/60 backdrop-blur-md shadow-sm sticky top-0 z-30">
+        <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+          <div className="flex items-center gap-4">
+            <div className="w-10 h-10 bg-gradient-to-br from-pink-500 to-indigo-600 rounded-2xl shadow-md flex items-center justify-center text-white font-bold">PG</div>
+            <h1 className="text-lg font-semibold">Seu Site</h1>
+          </div>
+          <nav className="hidden md:flex gap-6 items-center text-sm">
+            <a href="#about" className="hover:underline">Sobre</a>
+            <a href="#services" className="hover:underline">Serviços</a>
+            <a href="#work" className="hover:underline">Portfólio</a>
+            <a href="#contact" className="hover:underline">Contato</a>
+            <Button size="sm">Contratar</Button>
+          </nav>
+        </div>
+      </header>
+
+      <main className="max-w-6xl mx-auto px-6 py-20">
+        <section className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-4xl md:text-5xl font-extrabold leading-tight">Crie uma presença online que se destaque.</h2>
+            <p className="mt-4 text-lg text-slate-600">Site moderno, responsivo e otimizado para conversões. Perfeito para portfólios, serviços ou pequenas empresas.</p>
+
+            <div className="mt-6 flex gap-4">
+              <Button>Ver Portfólio</Button>
+              <a href="#contact" className="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-slate-800 text-white">Contato <Mail size={16} /></a>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ scale: 0.98, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.6 }}
+            className="relative"
+          >
+            <div className="w-full h-64 md:h-80 rounded-2xl bg-gradient-to-br from-pink-100 to-indigo-50 border border-gray-200 shadow-inner flex items-center justify-center">
+              <div className="text-center p-6">
+                <p className="text-slate-500">Imagem / mockup</p>
+                <div className="mt-4 text-sm text-slate-400">Substitua por imagem sua ou do seu produto</div>
+              </div>
+            </div>
+          </motion.div>
+        </section>
+
+        <section id="about" className="mt-20">
+          <h3 className="text-2xl font-bold">Sobre</h3>
+          <p className="mt-4 text-slate-600">Somos especialistas em transformar ideias em websites funcionais, rápidos e fáceis de atualizar. Este template é apenas o começo — podemos personalizar cores, tipografia, páginas e integrações.</p>
+        </section>
+
+        <section id="services" className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+          <Card>
+            <CardContent>
+              <h4 className="font-semibold">Design Responsivo</h4>
+              <p className="mt-2 text-sm text-slate-500">Layouts que funcionam bem em celular, tablet e desktop.</p>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardContent>
+              <h4 className="font-semibold">Otimização de SEO</h4>
+              <p className="mt-2 text-sm text-slate-500">Configuração básica para motores de busca.</p>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardContent>
+              <h4 className="font-semibold">Integrações</h4>
+              <p className="mt-2 text-sm text-slate-500">Formulários, pagamentos, analytics e mais.</p>
+            </CardContent>
+          </Card>
+        </section>
+
+        <section id="work" className="mt-12">
+          <h3 className="text-2xl font-bold">Portfólio</h3>
+          <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {Array.from({ length: 6 }).map((_, i) => (
+              <div key={i} className="rounded-2xl overflow-hidden border bg-white shadow-sm">
+                <div className="h-40 bg-gray-100 flex items-center justify-center">Projeto {i + 1}</div>
+                <div className="p-4">
+                  <h5 className="font-semibold">Projeto {i + 1}</h5>
+                  <p className="text-sm text-slate-500 mt-2">Breve descrição do projeto e tecnologias usadas.</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section id="contact" className="mt-16">
+          <h3 className="text-2xl font-bold">Contato</h3>
+          <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+            <form className="space-y-4">
+              <input className="w-full border rounded-md px-3 py-2" placeholder="Nome" />
+              <input className="w-full border rounded-md px-3 py-2" placeholder="E-mail" />
+              <textarea className="w-full border rounded-md px-3 py-2" rows={5} placeholder="Mensagem" />
+              <div>
+                <Button type="button">Enviar mensagem</Button>
+              </div>
+            </form>
+
+            <div>
+              <Card>
+                <CardContent>
+                  <h4 className="font-semibold">Informações</h4>
+                  <p className="mt-2 text-sm text-slate-500">Telefone: (00) 0000-0000<br/>E-mail: exemplo@seusite.com</p>
+                  <div className="mt-4">
+                    <a href="mailto:exemplo@seusite.com" className="inline-flex items-center gap-2 text-sm">Enviar e-mail <Mail size={14} /></a>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer className="bg-white/60 border-t mt-16">
+        <div className="max-w-6xl mx-auto px-6 py-6 flex flex-col md:flex-row items-center justify-between text-sm text-slate-500">
+          <div>© {new Date().getFullYear()} Seu Nome. Todos os direitos reservados.</div>
+          <div className="mt-3 md:mt-0">Feito com ❤️ — Personalize-me</div>
+        </div>
+      </footer>
+    </div>
+  );
+}
